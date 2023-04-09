@@ -1,0 +1,175 @@
+Suppose that you want to maintain information about different
+vehicles. You are supposed to create a base class called Vehicle
+that comprises two data members make and model. Further,
+extend the base class to create another two subclasses.
+One namely ‘Car’ with data members price, seating capacity and
+fuel type. And another ‘bike’ class with data members cylinders,
+number of gears, and fuel tank size. Further, create another
+subclass for Audi having a data member to store the horse power.
+Next, make a subclass BajajBike having a data member engine
+power in cc.
+You have to select the best base class in order to extend the
+derived class. Also demonstrate the object creation from all the
+derived classes defined in the program.
+In continuation with the Q. No. 1 above, demonstrate the concept
+function
+overriding by redefining the member function (method)
+printDetails() in each of the
+derived class, that prints the information of each object created.
+Code:
+#include <iostream>
+using namespace std;
+class Vehicle
+{//Vehicle is the Base class
+protected:
+string make,model;
+public:
+
+Vehicle()
+{//default constructor
+make = "";
+model = "";
+}
+void getDetails()
+{//Method to get details for Vehicle class
+cout<<"\tMake: ";
+getline(cin, make);
+cout<<"\tModel: ";
+getline(cin, model);
+}
+void printDetails()
+{//Method to print details for Vehicle class
+cout<<"\tMake: "<<make<<endl;
+cout<<"\tModel: "<<model<<endl;
+}
+};
+class Car: public Vehicle
+{//Car Sub class
+protected:
+string price,seating_cap,fuel_type;
+public:
+Car()
+{//default constructor
+price = "";
+
+seating_cap = "";
+fuel_type = "";
+}
+void getDetails()
+{//Method to get details for Car class
+cout<<"Enter details for Car:\n";
+Vehicle::getDetails();
+cout<<"\tPrice: ";
+getline(cin, price);
+cout<<"\tSeating Capacity: ";
+getline(cin, seating_cap);
+cout<<"\tFuel Type: ";
+getline(cin, fuel_type);
+}
+void printDetails()
+{//Method to print details for Car class
+cout<<"Car Specifications:\n";
+Vehicle::printDetails();
+cout<<"\tPrice: Rs "<<price<<endl;
+cout<<"\tSeating Capacity: "<<seating_cap<<endl;
+cout<<"\tType of Fuel: "<<fuel_type<<" L"<<endl;
+}
+};
+class Bike: public Vehicle
+{//Bike Sub class
+protected:
+
+string cylinders,num_gears,fueltank_size;
+public:
+Bike()
+{//default constructor
+cylinders = "";
+num_gears = "";
+fueltank_size = "";
+}
+void getDetails()
+{//Method to get details for Bike class
+cout<<"Enter details for Bike:\n";
+Vehicle::getDetails();
+cout<<"\tNumber of Cylinders: ";
+getline(cin, cylinders);
+cout<<"\tNumber of Gears: ";
+getline(cin, num_gears);
+cout<<"\tSize of the Fuel Tank: ";
+getline(cin, fueltank_size);
+}
+void printDetails()
+{//Method to print details for Bike class
+cout<<"Bike Specifications:\n";
+Vehicle::printDetails();
+cout<<"\tNumber of Cylinders: "<<cylinders<<endl;
+cout<<"\tNumber of Gears: "<<num_gears<<endl;
+cout<<"\tSize of the Fuel Tank: "<<fueltank_size<<" L"<<endl;
+
+}
+};
+class Audi: public Car
+{//Audi Sub class
+protected:
+string horse_power;
+public:
+Audi()
+{//default constructor
+horse_power = "";
+}
+void getDetails()
+{//Method to get details for Audi class
+cout<<"Enter details for Audi:\n";
+Vehicle::getDetails();
+cout<<"\tHorse Power: ";
+getline(cin, horse_power);
+}
+void printDetails()
+{//Method to print details for Audi class
+cout<<"Audi Specifications:\n";
+Vehicle::printDetails();
+cout<<"\tHorse Power: "<<horse_power<<endl;
+}
+};
+class BajajBike: public Bike
+
+{//BajajBike Sub class
+protected:
+string engine_power;
+public:
+BajajBike()
+{//default constructor
+engine_power = "";
+}
+void getDetails()
+{//Method to get details for BajajBike class
+cout<<"Enter details for Bajaj Bike:\n";
+Vehicle::getDetails();
+cout<<"\tEngine Power: ";
+getline(cin, engine_power);
+}
+void printDetails()
+{//Method to print details for BajajBike class
+cout<<"BajajBike Specifications:\n";
+Vehicle::printDetails();
+cout<<"\tEngine Power: "<<engine_power<<" cc"<<endl;
+}
+};
+int main()
+{//driver code
+Car *C = new Car; //pointer to Car sub-class
+Bike *B = new Bike; //pointer to Bike sub-class
+
+Audi *Y = new Audi; //pointer to Audi sub-class
+BajajBike *X = new BajajBike;//pointer to BajajBike sub-class
+C->getDetails(); //get details for Car subclass
+B->getDetails(); //get details for Bike subclass
+Y->getDetails(); //get details for Audi subclass
+X->getDetails(); //get details for BajajBike subclass
+cout<<"\n";
+C->printDetails(); //print details for Car subclass
+B->printDetails(); //print details for Bike subclass
+Y->printDetails(); //print details for Audi subclass
+X->printDetails(); //print details for BajajBike subclass
+return 0;
+}
